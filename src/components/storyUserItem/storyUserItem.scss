@@ -1,0 +1,33 @@
+.c-story-user-item {
+    max-width: 92px;
+    max-height: 116px;
+    cursor: pointer;
+}
+.avatar{
+    border-radius: 80px;
+    border: 2px solid #A6328D;
+}
+@media screen and (max-width: 400px) {
+    .avatar{
+        border-radius: 60px;
+    }
+}
+.username {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+}
+.img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 6px;
+    min-height: 60px;
+    min-width: 60px;
+}
+@media screen and (max-width: 400px) {
+    .img{
+        height: 60px;
+        width: 60px;
+    }
+}

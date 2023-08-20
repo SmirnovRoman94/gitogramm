@@ -1,0 +1,1 @@
+export { default as repoUserItem } from './repoUserItem.vue'

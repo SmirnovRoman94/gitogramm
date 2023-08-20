@@ -1,0 +1,173 @@
+.post-header {
+  padding-bottom: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-header .img {
+  height: 44px;
+  width: 44px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 80px;
+}
+
+.post-header .login {
+  font-size: 18px;
+  font-weight: 700;
+  padding-left: 14px;
+}
+
+@media screen and (max-width: 400px) {
+  .post-header .login {
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  .post-header .img {
+    height: 35px;
+    width: 35px;
+  }
+  .post-header {
+    padding-bottom: 10px;
+  }
+}
+
+.post-content {
+  border-radius: 10px;
+  border: 1px solid #F1F1F1;
+  background: #FFF;
+  -webkit-box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.07);
+          box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.07);
+  padding: 24px 20px;
+}
+
+.post-content .post-title {
+  font-size: 26px;
+  font-weight: 700px;
+  line-height: 28px;
+  padding-bottom: 15px;
+}
+
+.post-content .post-content-item {
+  padding-bottom: 32px;
+}
+
+.post-content .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.post-content .social-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: var(--gray-gray-0, #FAFBFC);
+  border: 1px solid var(--border-btn-15-black, rgba(27, 31, 35, 0.15));
+  background: var(--gray-gray-0, #FAFBFC);
+}
+
+.post-content .social-item:first-child {
+  border-radius: 6px 0px 0px 6px;
+}
+
+.post-content .social-item:last-child {
+  border-radius: 0px 6px 6px 0px;
+}
+
+.post-content .social-item button {
+  padding: 5px 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-right: 1px solid rgba(27, 31, 35, 0.15);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-content .social-item button .icon {
+  color: #586069;
+  width: 16px;
+  height: 16px;
+}
+
+.post-content .social-item button span {
+  font-size: 14px;
+  line-height: 18px;
+  color: #24292E;
+  display: block;
+  padding-left: 4px;
+}
+
+.post-content .social-item .social-item-count {
+  padding: 5px 11px;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .post-content .post-title {
+    font-size: 20px;
+    padding-bottom: 8px;
+  }
+  .post-content .post-content-item {
+    padding-bottom: 15px;
+    font-size: 12px;
+  }
+  .post-content .social-item button span, .post-content .social-item-count {
+    font-size: 10px;
+  }
+  .post-content .social-item button .icon {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.post-footer {
+  padding-top: 18px;
+}
+
+.post-footer .comments {
+  padding-top: 10px;
+}
+
+.post-footer .comments .comment-item:not(:first-child) {
+  padding-top: 6px;
+}
+
+.post-footer .comments .comment-item-user {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  padding-right: 8px;
+}
+
+.post-footer .date {
+  padding-top: 10px;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1.2px;
+}
+
+@media screen and (max-width: 400px) {
+  .post-footer {
+    padding-top: 10px;
+  }
+  .post-footer .comment-item {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  .post-footer .comment-item .comment-item-user {
+    font-size: 12px;
+  }
+  .post-footer .date {
+    font-size: 10px;
+  }
+}
+/*# sourceMappingURL=postUserItem.css.map */

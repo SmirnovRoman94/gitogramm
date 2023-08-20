@@ -1,0 +1,18 @@
+.btn {
+    background: rgb(11, 172, 11);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    min-width: 150px;
+
+    &:hover {
+        background: rgba(186, 216, 18, 0.852);
+
+    }
+    &.active {
+        background: aqua;
+        color: #000;
+    }
+}

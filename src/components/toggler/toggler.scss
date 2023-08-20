@@ -1,0 +1,29 @@
+button {
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    align-items: center;
+    span{
+        min-width: 82px;
+    }
+    .toggle-icon{
+        width: 16px;
+        height: 16px;
+        padding-left: 2px;
+
+        &.isActive{
+            transform: rotate(180deg);
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    button span{
+        font-size: 10px;
+        min-width: 62px;
+    }
+    button .toggle-icon{
+        padding-left: 1px;
+    }
+}
