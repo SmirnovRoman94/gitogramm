@@ -7,7 +7,7 @@
                 <icon name="logo"/>
             </a>
             <div class="close">
-                <icon name="close" @click="$router.push('/home')"/>
+                <icon name="close" @click="$router.push('/')"/>
             </div>
         </div>
         <div class="stories">
