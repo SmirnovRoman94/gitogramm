@@ -1,16 +1,16 @@
 export default [
    {
-    path: "/gitogramm/",
+    path: "/",
     component: () => import('@/pages/feeds/feeds.vue'),
     name: "Home",
    },
    {
-    path: "/gitogramm/repositories",
+    path: "/repositories",
     component: () => import('@/pages/repositories/repositories.vue'),
     name: "Repositories",
    },
    {
-    path: "/gitogramm/stories",
+    path: "/stories",
     component: () => import('@/pages/stories/stories.vue'),
     name: "Stories",
    },
