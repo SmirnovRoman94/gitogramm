@@ -3,7 +3,7 @@
         "id": 1,
         "user": {
             "login": "joshua_l",
-            "avatar": "https://s3-alpha-sig.figma.com/img/4f9a/2548/ed81334396ae7263a8ba8438bb80162f?Expires=1692576000&Signature=mI6b9d5bOONK8OM39ZopV5-n1tlgTaiLcR0YIzLhEJVGN9lQT1Q6UShrVO8RQU8o~2jX6DDsSLOoafuhThndBsYXL9ff9r9axeg39KzuFpvndH-D3K7b~B0~Pm93j5E9TsUfKkSJOvK8LpAgkb-EckpVshhVs5vIkSmmhSWoTN6jZnnb6tS0NdIbPCP7SF0gAKDT7pIf1seCUhNqlISQoYsXp702S1~oUGS4E1wDxz-zM4bt1NqOcl9bHK9VZGDZ-hvikjfrbyfoSpxa7r8ycWoaCih39V8xa7V1UqJ716HvKwtv~2KH4LXqPgztou~r83xY2pdbMqw0YHM3mqYryQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            "avatar": "https://api.dicebear.com/6.x/micah/svg?seed=Muffi"
         },
         "title": "Vue.js",
         "text": "<div><p><strong>JavaScript</strong> framework for building interactive web applications ⚡</p></div>",
@@ -32,7 +32,7 @@
         "id": 2,
         "user": {
             "login": "Camille",
-            "avatar": "https://s3-alpha-sig.figma.com/img/b8c1/585a/831201e8ac81d1c5a364ab0a85154baa?Expires=1692576000&Signature=nigrk10KuFXkSjlC~tleoiPNPAa6986VlVAJcQO~IZH2FT5-wImk~LD56SJTxIX-WtA0cRr-Tl~dxqEoZsoODj4Uc31oT7me2AOLhGKPCAUDPoaZR-8tiGH1XyLlR~ddbzMwCT47Gdgk13JRyBP~hZkUgMlqUeXbx7ra9NAh9qALZBcffx-9LVqP~HHjfOfdO5EDxy-0CnhcNUM8nghaR9OI50VwzgbBn6yDaHvTDu~hO2CX8t9YMbMneynp72~vlmOlakL9fvx14z~sx~gAHfJhDD132li3b1D6QVy~NPrEHHMxEweA~B3vA36wUX-UkGcDyf4Lhy6bZuFnqWeBtw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            "avatar": "https://api.dicebear.com/6.x/micah/svg?seed=Simon"
         },
         "title": "React.js",
         "text": "<div><p><strong>Open source</strong> JavaScript library used for designing user interfaces</p></div>",

@@ -17,75 +17,66 @@
             </a>
           </div>
         </template>
-        <!-- <template #content>
+        <template #content>
           <ul class="stories">
-            <li class="stories-item" v-for="item in dataUser" :key="item.id">
-              <story-user-item :avatar="item.avatar" :user-name="item.username"/>
+            <li class="stories-item" v-for="(item, index) in dataItems" :key="index">
+              <story-user-item :avatar="item.owner.avatar_url" :user-name="item.owner.login" @click="getItem(item)"/>
             </li>
           </ul>
-        </template> -->
+        </template>
       </topline>
-      <!-- <div class="posts">
+      <div class="posts">
         <div class="post" v-for="item in dataPost" :key="item.id">
           <postUserItem :post="item"/>
         </div>
-      </div> -->
-     
-      <div class="repo">
-        <div class="header">
-          <h1>Repositories</h1>
-          <span class="count_repo">10</span>
-        </div>
-        <div class="posts">
-          <repoUserItem v-for="item in items" :key="item.id" v-bind="getDataItem(item)" class="post"/>
-        </div>
       </div>
+     
     </div>
 </template>
 
 <script>
 import topline from '@/components/topline/topline'
 import icon from '@/icons/icon'
-// import dataUser from '@/pages/feeds/dataUser'
-// import storyUserItem from '@/components/storyUserItem/storyUserItem'
-// import postUserItem from '@/components/postUserItem/postUserItem'
+import {mapGetters, mapActions} from "vuex"
+import storyUserItem from '@/components/storyUserItem/storyUserItem'
+import postUserItem from '@/components/postUserItem/postUserItem'
 import dataPost from '@/pages/feeds/dataPost'
-import repoUserItem from '@/components/repoUserItem/repoUserItem'
-import * as api from '../../api';
 export default {
   name: 'feeds',
   components: {
     topline,
     icon,
-    repoUserItem
-    // storyUserItem,
-    // postUserItem
+    storyUserItem,
+    postUserItem
   },
   data: () => ({
     user: {
       avatar: require('../../assets/Photo.png'),
     },
-    // dataUser,
     dataPost,
     items: []
   }),
+  computed: {
+    ...mapGetters({
+      dataItems: "trandings/getDataTrandings",
+    }),
+  },
   methods: {
-    getDataItem(item){
-      return {
-        title: item.name,
-        desc: item.description,
-        forks: item.forks_count,
-        stars: item.stargazers_count
-      }
+    ...mapActions({
+      fetchTrandings: "trandings/fetchTrandings",
+    }),
+    getItem(item){
+      console.log(item)
+      this.$router.push({
+        name: "Stories",
+        query: {
+          id: item.id
+        }
+      })
     }
   },
   async created() {
-    try{
-      const {data} = await api.trandings.getTrandings();
-      this.items = data.items;
-    }catch(err){
-      console.log(err)
-    }
+    await this.fetchTrandings()
   }
 }
 </script>

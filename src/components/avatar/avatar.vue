@@ -10,8 +10,7 @@ export default {
     name: "avatar",
     props: {
         title: {
-            type: String,
-            required: true
+            type: String
         }
     }
 }

@@ -1,10 +1,18 @@
 <template>
     <div class="wrapper">
-        <progressLine/>
+        <progressLine :activeItem="active"/>
 
-        <avatar :src="'https://i.pinimg.com/originals/17/00/d0/1700d0de585e62c3b7aee44d1fa80f93.jpg'" :alt="'Peter'" :title="'React.reposit'" class="avatar-item"/>
+        <avatar :src="data.avatar" :alt="data.login" :title="data.name" class="avatar-item"/>
             <div class="content">
-                <slot></slot>
+                <div class="spiner" v-if="loading == true">
+                    <spiner/>
+                </div>
+                <div v-if="data.data">
+                    <div class="content-item" v-html="data.data"></div>
+                </div>
+                <div v-else class="placeholder">
+                    <placeholder :count="3"/>
+                </div>
             </div>
         <div class="footer">
             <itembutton :nameBtn="'Follow'" :changeTitle="'Unfollow'"></itembutton>
@@ -16,14 +24,29 @@
 import progressLine from '../progressLine/progressLine.vue'
 import avatar from "../avatar/avatar.vue"
 import itembutton from '../button/button.vue'
+import spiner from '../spiner/spiner.vue'
+import placeholder from '../placeholder/placeholder.vue'
 export default {
     name: "userSliderItem",
     components: {
         progressLine,
         avatar,
-        itembutton
+        itembutton,
+        spiner,
+        placeholder
     },
-
+    props: {
+        active: Boolean,
+        loading: {
+            type: Boolean,
+            default: () => (false)
+        },
+        data: {
+            type: Object,
+            required: true,
+            default: () => ({})
+        }
+    },
 }
 </script>
 

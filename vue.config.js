@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  publicPath: "https://smirnovroman94.github.io/gitogramm/",
+  publicPath: process.env.VUE_APP_URL,
   transpileDependencies: true,
   pluginOptions: {
     storybook: {

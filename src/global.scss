@@ -58,3 +58,20 @@ button {
     width: 1200px;
     margin: 0 auto;
 }
+
+.nav{
+    display: flex;
+    li{
+        margin-left: 10px;
+        font-size: 16px;
+        font-weight: 400;
+        a{
+            text-decoration: none;
+            color: rgb(86, 201, 120);
+        }
+        .router-link-active{
+            color: rgb(123, 86, 201);
+            border-bottom: 1px solid rgb(123, 86, 201);
+        }
+    }
+}
