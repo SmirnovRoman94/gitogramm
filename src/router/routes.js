@@ -1,6 +1,6 @@
 export default [
    {
-    path: "/",
+    path: "/home",
     component: () => import('@/pages/feeds/feeds.vue'),
     name: "Home",
    },
