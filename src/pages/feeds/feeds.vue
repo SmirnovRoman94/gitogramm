@@ -12,7 +12,7 @@
             <a href="#" class="icon">
               <img :src="user.avatar" class="avatar"/>
             </a>
-            <a href="#" class="icon">
+            <a href="#" class="icon" @click="logout">
               <icon name="signOut"/>
             </a>
           </div>
@@ -26,7 +26,7 @@
         </template>
       </topline>
       <div class="posts">
-        <div class="post" v-for="item in dataPost" :key="item.id">
+        <div class="post" v-for="item in getUserLikes" :key="item.id">
           <postUserItem :post="item"/>
         </div>
       </div>
@@ -40,7 +40,7 @@ import icon from '@/icons/icon'
 import {mapGetters, mapActions} from "vuex"
 import storyUserItem from '@/components/storyUserItem/storyUserItem'
 import postUserItem from '@/components/postUserItem/postUserItem'
-import dataPost from '@/pages/feeds/dataPost'
+// import dataPost from '@/pages/feeds/dataPost'
 export default {
   name: 'feeds',
   components: {
@@ -53,17 +53,21 @@ export default {
     user: {
       avatar: require('../../assets/Photo.png'),
     },
-    dataPost,
+    // dataPost,
     items: []
   }),
   computed: {
     ...mapGetters({
       dataItems: "trandings/getDataTrandings",
+      getUserInfo: "user/getUserInfo",
+      getUserLikes: "user/getUserLikes"
     }),
   },
   methods: {
     ...mapActions({
       fetchTrandings: "trandings/fetchTrandings",
+      UserInfo: "user/UserInfo",
+      userLikes: "user/userLikes",
     }),
     getItem(item){
       console.log(item)
@@ -73,10 +77,19 @@ export default {
           id: item.id
         }
       })
+    },
+    logout(){
+      localStorage.removeItem("token")
     }
   },
   async created() {
-    await this.fetchTrandings()
+    await this.fetchTrandings();
+    await this.UserInfo();
+    await this.userLikes();
+    console.log(this.getUserLikes)
+    if(this.getUserInfo){
+      this.user.avatar = this.getUserInfo.avatar_url
+    }
   }
 }
 </script>

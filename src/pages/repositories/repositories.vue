@@ -29,8 +29,9 @@ export default {
           forks: item.forks_count,
           stars: item.stargazers_count
         }
-      }
+      },
     },
+
     async created() {
         try{
         const {data} = await api.trandings.getTrandings();

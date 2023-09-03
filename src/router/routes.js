@@ -14,4 +14,9 @@ export default [
     component: () => import('@/pages/stories/stories.vue'),
     name: "Stories",
    },
+   {
+      path: "/auth",
+      component: () => import('@/pages/auth/auth.vue'),
+      name: "auth",
+   },
 ]

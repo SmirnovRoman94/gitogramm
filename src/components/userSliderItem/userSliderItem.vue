@@ -15,7 +15,7 @@
                 </div>
             </div>
         <div class="footer">
-            <itembutton :nameBtn="'Follow'" :changeTitle="'Unfollow'"></itembutton>
+            <itembutton :nameBtn="'Follow'" :changeTitle="'Unfollow'" :loading="false" @click="$emit('follow', data)"></itembutton>
         </div>
     </div>
 </template>

@@ -13,7 +13,7 @@
         <div class="stories">
             <div class="content-stories" :style="{transform : 'translateX('+ this.turnData +'px)'}">
                 <div v-for="(item, index) in dataItemsRepo" :key="index" class="content-item" :class="{'active' : activeIndex == index}">
-                    <userSliderItem :data="item" active  :loading="item.loading"/>
+                    <userSliderItem :data="item" active  :loading="item.loading" @follow="followItem"/>
 
                     <div class="controls" v-if="activeIndex == index">
                         <div class="controls-item" :class="regularClass">
@@ -64,7 +64,8 @@ export default {
     methods: {
         ...mapActions({
             fetchTrandings: "trandings/fetchTrandings",
-            fetchTrandingsItem: "trandings/fetchTrandingsItem"
+            fetchTrandingsItem: "trandings/fetchTrandingsItem",
+            addLike: "user/addLike"
         }),
         prev(){
             this.activeIndex--;
@@ -81,12 +82,17 @@ export default {
                 this.fetchTrandingsItem(this.dataItemsRepo[this.activeIndex])
                 this.turnData = this.turnData - 475
             }
+        },
+        followItem(item){
+            this.addLike({owner: item.login, repo:item.title})
         }
     },
     watch: {
         dataItems: function(){
+            console.log(this.dataItems)
             this.dataItems.forEach(el => {
                 let item = {
+                    id: el.id,
                     login: el.owner.login,
                     name: el.name,
                     avatar: el.owner.avatar_url,
@@ -97,6 +103,7 @@ export default {
             if(this.$route.query.id){
                 let indexItem = this.dataItems.findIndex(el => el.id == this.$route.query.id);
                 let item = {
+                    id: this.dataItems[indexItem].id,
                     login: this.dataItems[indexItem].owner.login,
                     name: this.dataItems[indexItem].name,
                     avatar: this.dataItems[indexItem].owner.avatar_url,

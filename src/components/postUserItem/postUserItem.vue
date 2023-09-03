@@ -27,7 +27,7 @@
         <div class="post-footer">
             <toggler @togleBtn="togleItem" :isShow="showingToggle"/>
             <ul class="comments" v-if="showingToggle">
-                <li class="comment-item" v-for="comment in post.comments" :key="comment.id">
+                <li class="comment-item" v-for="comment in comments" :key="comment.id">
                     <span class="comment-item-user">{{ comment.user_login }}</span>
                     <span>{{ comment.comment_text }}</span>
                 </li>
@@ -40,6 +40,7 @@
 <script>
 import icon from '@/icons/icon'
 import { toggler } from '../toggler'
+import {mapActions} from "vuex"
 export default {
   name: 'PostUserItem',
   components: {
@@ -53,7 +54,8 @@ export default {
     }
   },
   data: () => ({
-    showingToggle: true
+    showingToggle: false,
+    comments: []
   }),
   computed: {
     countStar () {
@@ -66,10 +68,25 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      dataComments: "user/dataComments"
+    }),
     togleItem () {
       this.showingToggle = !this.showingToggle
     }
+  },
+  async created() {
+    const items = await this.dataComments({owner: this.post.user.login, repo: this.post.title});
+    items.forEach(el => {
+      const item = {
+        id: el.id,
+        user_login: el.user.login,
+        comment_text: el.title
+      }
+      this.comments.push(item)
+    });
   }
+
 }
 </script>
 

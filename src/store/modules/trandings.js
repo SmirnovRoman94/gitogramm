@@ -32,7 +32,8 @@ export const trandings = {
         async fetchTrandingsItem(context, filter){
             try{
                 const { data } = await api.itemTrandings.getTrandings(filter.login, filter.name);
-                this.commit('trandings/set_trandings_item', {avatar: filter.avatar, login: filter.login, title:filter.name,  data: data, loading: false});
+                console.log(data)
+                this.commit('trandings/set_trandings_item', {avatar: filter.avatar, login: filter.login, title:filter.name,  data: data, loading: false, id: filter.id});
             }catch(error){
                 this.commit('trandings/set_errors', 'Не удалось получить данные');
             }
