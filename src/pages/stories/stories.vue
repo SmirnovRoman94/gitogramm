@@ -85,10 +85,12 @@ export default {
             }
         },
         async followItem(item){
+            console.log(item.follow)
             if(item.follow == false){
                 let idItem = item.id;
                 let result = await this.addLike({owner: item.login, repo:item.title});
                 this.dataItemsRepo.map(el => el.id === idItem ? el.follow = result : el);
+                console.log( this.dataItemsRepo)
             }else{
                 let idItem = item.id;
                 let result = await this.deleteLike({owner: item.login, repo:item.title});
@@ -106,7 +108,7 @@ export default {
                     name: el.name,
                     avatar: el.owner.avatar_url,
                     loading: false,
-                    follow: el.follow
+                    follow: false
                 }
                 this.dataItemsRepo.push(item)
             });
