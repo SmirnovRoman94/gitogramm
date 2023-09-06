@@ -40,7 +40,7 @@ export default {
     data: () => ({
         dataItemsRepo: [],
         activeIndex: 0,
-        turnData: 0
+        turnData: 0,
     }),
     computed: {
         ...mapGetters({
@@ -65,7 +65,8 @@ export default {
         ...mapActions({
             fetchTrandings: "trandings/fetchTrandings",
             fetchTrandingsItem: "trandings/fetchTrandingsItem",
-            addLike: "user/addLike"
+            addLike: "user/addLike",
+            deleteLike: "user/deleteLike"
         }),
         prev(){
             this.activeIndex--;
@@ -83,8 +84,16 @@ export default {
                 this.turnData = this.turnData - 475
             }
         },
-        followItem(item){
-            this.addLike({owner: item.login, repo:item.title})
+        async followItem(item){
+            if(item.follow == false){
+                let idItem = item.id;
+                let result = await this.addLike({owner: item.login, repo:item.title});
+                this.dataItemsRepo.map(el => el.id === idItem ? el.follow = result : el);
+            }else{
+                let idItem = item.id;
+                let result = await this.deleteLike({owner: item.login, repo:item.title});
+                this.dataItemsRepo.map(el => el.id === idItem ? el.follow = result : el);
+            }
         }
     },
     watch: {
@@ -97,6 +106,7 @@ export default {
                     name: el.name,
                     avatar: el.owner.avatar_url,
                     loading: false,
+                    follow: el.follow
                 }
                 this.dataItemsRepo.push(item)
             });
@@ -108,6 +118,7 @@ export default {
                     name: this.dataItems[indexItem].name,
                     avatar: this.dataItems[indexItem].owner.avatar_url,
                     loading: false,
+                    follow: this.dataItems[indexItem].follow
                 }
                 if(indexItem !== -1){
                     this.fetchTrandingsItem(item);

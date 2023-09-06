@@ -15,7 +15,7 @@
                 </div>
             </div>
         <div class="footer">
-            <itembutton :nameBtn="'Follow'" :changeTitle="'Unfollow'" :loading="false" @click="$emit('follow', data)"></itembutton>
+            <itembutton :nameBtn="'Follow'" :changeTitle="'Unfollow'" :change="data.follow" :loading="false" @click="$emit('follow', data)"></itembutton>
         </div>
     </div>
 </template>
@@ -45,7 +45,7 @@ export default {
             type: Object,
             required: true,
             default: () => ({})
-        }
+        },
     },
 }
 </script>

@@ -33,7 +33,7 @@ export const trandings = {
             try{
                 const { data } = await api.itemTrandings.getTrandings(filter.login, filter.name);
                 console.log(data)
-                this.commit('trandings/set_trandings_item', {avatar: filter.avatar, login: filter.login, title:filter.name,  data: data, loading: false, id: filter.id});
+                this.commit('trandings/set_trandings_item', {avatar: filter.avatar, login: filter.login, title:filter.name,  data: data, loading: false, id: filter.id, follow: false});
             }catch(error){
                 this.commit('trandings/set_errors', 'Не удалось получить данные');
             }

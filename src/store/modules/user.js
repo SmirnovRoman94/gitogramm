@@ -80,24 +80,39 @@ export const user = {
             }
         },
         async addLike(context, filter){
-            console.log(filter)
+            console.log(filter) 
 
             try{
-                const responce =  await fetch(`https://api.github.com/user/starred/SmirnovRoman94/notes3`, {
+                const responce =  await fetch(`https://api.github.com/user/starred/${filter.owner}/${filter.repo}`, {
                     method: "PUT",
                     headers: {
-                    Authorization: `token ${localStorage.getItem("token")}`,
-                    "Content-type": "application/json",
-                    "Content-Length": 0,
-                    'X-GitHub-Api-Version': '2022-11-28'
+                    Authorization: `token ${localStorage.getItem("token")}`
                     }
                 });
                 let data = await responce.json();
                 console.log(data);
+                return true
             }catch(error){
                 this.commit('user/set_errors', 'Не удалось получить данные');
             }
-        }   
+        },
+        async deleteLike(context, filter){
+            console.log(filter) 
+
+            try{
+                const responce =  await fetch(`https://api.github.com/user/starred/${filter.owner}/${filter.repo}`, {
+                    method: "DELETE",
+                    headers: {
+                    Authorization: `token ${localStorage.getItem("token")}`
+                    }
+                });
+                let data = await responce.json();
+                console.log(data);
+                return false
+            }catch(error){
+                this.commit('user/set_errors', 'Не удалось получить данные');
+            }
+        }      
     },
     getters: {
         getUserInfo(store){
