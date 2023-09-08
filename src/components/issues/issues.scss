@@ -1,0 +1,6 @@
+.comments{
+    padding-top: 10px;
+    .comment-item:not(:first-child){
+            padding-top: 6px;
+        }
+    }

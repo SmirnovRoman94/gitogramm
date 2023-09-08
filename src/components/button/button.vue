@@ -18,9 +18,6 @@ export default {
         spiner,
         icon
     },
-    data: () => ({
-        itemFollow: 'default'
-    }),
     props: {
         nameBtn:{
             type: String
@@ -42,11 +39,25 @@ export default {
         }
     },
     emits: ['clicked'],
+    computed: {
+        itemFollow(){
+            let item = '';
+            if(this.change == false){
+                item = 'default'
+            }else{
+                item = 'active'
+            }
+            return item
+        }
+    },
     methods: {
         following(){
             this.itemFollow = (this.itemFollow === 'default') ? 'active' : 'default';
             this.$emit('clicked')
         }
+    },
+    mounted() {
+        console.log(this.change)
     }
 }
 </script>

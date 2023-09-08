@@ -111,18 +111,6 @@
 .post-footer{
     padding-top: 18px;
 
-    .comments{
-        padding-top: 10px;
-        .comment-item:not(:first-child){
-            padding-top: 6px;
-        }
-        .comment-item-user{
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 22px;
-            padding-right: 8px;
-        }
-    }
     .date{
         padding-top: 10px;
         color: rgba(0, 0, 0, 0.40);
@@ -139,9 +127,6 @@
         .comment-item{
             font-size: 10px;
             line-height: 14px;
-            .comment-item-user{
-                font-size: 12px;
-            }
         }
         .date {
             font-size: 10px;

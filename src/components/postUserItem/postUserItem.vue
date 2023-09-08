@@ -25,13 +25,7 @@
             </div>
         </div>
         <div class="post-footer">
-            <toggler @togleBtn="togleItem" :isShow="showingToggle"/>
-            <ul class="comments" v-if="showingToggle">
-                <li class="comment-item" v-for="comment in comments" :key="comment.id">
-                    <span class="comment-item-user">{{ comment.user_login }}</span>
-                    <span>{{ comment.comment_text }}</span>
-                </li>
-            </ul>
+            <issues :issues="comments" :loading="load" @loadContent="loadComments"/>
             <div class="date">{{ dateComputed }}</div>
         </div>
     </div>
@@ -39,13 +33,13 @@
 
 <script>
 import icon from '@/icons/icon'
-import { toggler } from '../toggler'
 import {mapActions} from "vuex"
+import issues from '../issues/issues.vue'
 export default {
   name: 'PostUserItem',
   components: {
     icon,
-    toggler
+    issues
   },
   props: {
     post: {
@@ -55,7 +49,8 @@ export default {
   },
   data: () => ({
     showingToggle: false,
-    comments: []
+    comments: [],
+    load: false
   }),
   computed: {
     countStar () {
@@ -71,21 +66,36 @@ export default {
     ...mapActions({
       dataComments: "user/dataComments"
     }),
-    togleItem () {
-      this.showingToggle = !this.showingToggle
+    // togleItem () {
+    //   this.showingToggle = !this.showingToggle
+    // },
+    async loadComments(){
+      this.load = true;
+      const items = await this.dataComments({owner: this.post.user.login, repo: this.post.title});
+        if(items.length > 0){
+          this.load = false;
+        }
+        items.forEach(el => {
+        const item = {
+          id: el.id,
+          user_login: el.user.login,
+          comment_text: el.title
+        }
+        this.comments.push(item)
+      });
     }
   },
-  async created() {
-    const items = await this.dataComments({owner: this.post.user.login, repo: this.post.title});
-    items.forEach(el => {
-      const item = {
-        id: el.id,
-        user_login: el.user.login,
-        comment_text: el.title
-      }
-      this.comments.push(item)
-    });
-  }
+  // async created() {
+  //   const items = await this.dataComments({owner: this.post.user.login, repo: this.post.title});
+  //   items.forEach(el => {
+  //     const item = {
+  //       id: el.id,
+  //       user_login: el.user.login,
+  //       comment_text: el.title
+  //     }
+  //     this.comments.push(item)
+  //   });
+  // }
 
 }
 </script>

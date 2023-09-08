@@ -1,0 +1,13 @@
+.comment-item-user{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    padding-right: 8px;
+}
+
+@media screen and (max-width: 400px) {
+   
+    .comment-item-user{
+        font-size: 12px;
+    }
+}

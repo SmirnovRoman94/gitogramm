@@ -45,6 +45,7 @@ export default {
     computed: {
         ...mapGetters({
             dataItems: "trandings/getDataTrandings",
+            getUserLikesIds: "user/getUserLikesIds"
 
         }),
         ...mapState({
@@ -66,7 +67,8 @@ export default {
             fetchTrandings: "trandings/fetchTrandings",
             fetchTrandingsItem: "trandings/fetchTrandingsItem",
             addLike: "user/addLike",
-            deleteLike: "user/deleteLike"
+            deleteLike: "user/deleteLike",
+            userLikes: "user/userLikes"
         }),
         prev(){
             this.activeIndex--;
@@ -108,7 +110,7 @@ export default {
                     name: el.name,
                     avatar: el.owner.avatar_url,
                     loading: false,
-                    follow: false
+                    follow: el.follow
                 }
                 this.dataItemsRepo.push(item)
             });
@@ -141,8 +143,13 @@ export default {
         }
     },
     async created() {
-        console.log(this.$route.query)
-        await this.fetchTrandings()
+        console.log(this.$route.query, this.getUserLikesIds)
+        if(this.getUserLikesIds !== null){
+            await this.fetchTrandings(this.getUserLikesIds)
+        }else{
+            await this.userLikes();
+            this.fetchTrandings(this.getUserLikesIds)
+        }
     }
 }
 </script>

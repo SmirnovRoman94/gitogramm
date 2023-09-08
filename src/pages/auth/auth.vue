@@ -34,7 +34,7 @@ export default {
             const apiUrl = "https://github.com/login/oauth/authorize";
             const params = new URLSearchParams();
             params.append('client_id', clientId);
-            params.append('scope', 'repo:status read:user');
+            params.append('scope', 'repo read:user user:follow');
 
             window.location.href = `${apiUrl}?${params}`;
       }

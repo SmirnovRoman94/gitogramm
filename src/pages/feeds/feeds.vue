@@ -2,7 +2,7 @@
     <div class="topline">
       <topline>
         <template #headline>
-          <a href="#" class="logo">
+          <a href="#" class="logo" @click="$router.push('/')">
             <icon name="logo"/>
           </a>
           <div class="icons">
@@ -10,7 +10,9 @@
               <icon name="home"/>
             </a>
             <a href="#" class="icon">
-              <img :src="user.avatar" class="avatar"/>
+              <router-link to="/repositories">
+                <img :src="user.avatar" class="avatar"/>
+              </router-link>
             </a>
             <a href="#" class="icon" @click="logout">
               <icon name="signOut"/>
