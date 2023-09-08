@@ -21,8 +21,9 @@
 <script>
 import icon from '@/icons/icon'
 import xButton from '@/components/button/button'
-const clientId = "bd7da8bef82caf0f2d50";
-const clientSecret = "2d2295771930a82bcf8e449716a27e4938512645";
+// const clientId = "bd7da8bef82caf0f2d50";
+// const clientSecret = "2d2295771930a82bcf8e449716a27e4938512645";
+import {clientId, clientSecret} from "../../../codes/configGitHub"
 export default {
     name: "auth",
     components: {

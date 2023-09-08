@@ -2,6 +2,8 @@
 node_modules
 /dist
 
+/codes/configGitHub.js
+
 
 # local env files
 .env.local
